@@ -1,0 +1,88 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: python -m pip install --quiet pyyaml pytest ruff
+
+      - name: Lint
+        run: python -m ruff check .
+
+      - name: Tests
+        run: python -m pytest tests/ -q
+
+      # Encoding, tripwire tokens and private paths. The dataset is published
+      # from a private workspace; these are the checks that keep a token from
+      # that workspace out of it.
+      - name: Repo hygiene
+        # --no-history on purpose. The history scan reports the findings that are
+        # already in PUBLISHED history, which is a decision for the repository
+        # owner (a rewrite), not something a CI job can or should fix. Run it
+        # locally without the flag to see the current state.
+        run: python scripts/check_hygiene.py --no-history
+
+      # Every relative link in every document must resolve. A broken link in a
+      # repository whose argument is "everything here is checkable" is worse
+      # than a broken link anywhere else.
+      - name: Links resolve
+        run: python scripts/check_links.py
+
+      # The gate ids are shared with viability-gate. This skips cleanly when the
+      # sibling repository is not checked out.
+      - name: Vocabulary agrees with the siblings
+        run: python scripts/check_vocabulary.py
+
+      # The export must validate against its own allowlist with no private
+      # inputs available. This is the architectural guarantee: every value comes
+      # from a closed vocabulary, so source text cannot reach the output.
+      - name: Validate the export
+        run: python scripts/build_public_export.py --check --out data/
+
+      # Every published aggregate and every README table is generated. If this
+      # fails, the README is quoting numbers the data no longer supports.
+      - name: Generated numbers are current
+        run: python scripts/stats.py --check
+
+      - name: Query tool smoke test
+        run: |
+          python scripts/query.py
+          python scripts/query.py --triage duplicate --json > /dev/null
+          python scripts/query.py --prehunt --json > /dev/null
+          python scripts/query.py --repeats --json > /dev/null
+          python scripts/query.py --preventable-by public_record --json > /dev/null
+
+  aggregates-only:
+    # --aggregates-only publishes the summary tables and drops the per-row
+    # tuples. It needs the private source, which CI does not have, so this job
+    # asserts the flag still exists and is documented rather than running it.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --quiet pyyaml
+      - name: The aggregates-only mode is still offered
+        run: |
+          set -e
+          python scripts/build_public_export.py --help > /tmp/help.txt
+          grep -q -- "--aggregates-only" /tmp/help.txt
+          grep -q -- "--explain-classes" /tmp/help.txt
+          echo "aggregates-only and explain-classes are present"

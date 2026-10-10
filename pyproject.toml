@@ -1,0 +1,48 @@
+[project]
+name = "rejection-taxonomy"
+version = "0.2.0"
+description = "97 logged bug-bounty rejections, classified by triage outcome and earliest catchable gate. Rejections only; no positive class."
+requires-python = ">=3.10"
+dependencies = ["pyyaml>=6"]
+readme = "README.md"
+license = { text = "MIT" }
+keywords = ["bug-bounty", "smart-contract", "triage", "duplicate-detection", "security-economics"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+rejection-taxonomy-query = "query:main"
+
+[project.urls]
+Homepage = "https://github.com/KhomDev/rejection-taxonomy"
+Changelog = "https://github.com/KhomDev/rejection-taxonomy/blob/main/CHANGELOG.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["build_public_export", "query", "stats", "check_hygiene", "verify_blocklist"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["scripts"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM"]
+ignore = [
+  # Long docstrings and explanatory comments are the point of this repository.
+  "E501",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# The generator's regex table is a data structure; its lines are long by nature.
+"scripts/build_public_export.py" = ["E501"]
+# SystemExit is not an exception being handled; "raise from" would be noise.
+"scripts/*.py" = ["B904"]

@@ -11,7 +11,8 @@ type: dataset
 authors:
   - alias: KhomDev
     name: KhomDev
-date-released: 2026-10-08
+version: "0.3.0"
+date-released: 2026-10-14
 license: CC-BY-4.0
 keywords:
   - bug bounty

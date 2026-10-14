@@ -1,6 +1,6 @@
 [project]
 name = "rejection-taxonomy"
-version = "0.2.0"
+version = "0.3.0"
 description = "97 logged bug-bounty rejections, classified by triage outcome and earliest catchable gate. Rejections only; no positive class."
 requires-python = ">=3.10"
 dependencies = ["pyyaml>=6"]

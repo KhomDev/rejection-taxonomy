@@ -7,6 +7,38 @@ All notable changes to this repository. Format follows
 The published dataset is a derived artifact. A schema change is a breaking change
 for anyone consuming `data/`, so it gets a major version.
 
+## [Unreleased]
+
+## [0.3.0] - 2026-10-14
+
+The first tagged release in this repository. It also contains the history-reset
+fix below. The dataset and its schema are unchanged.
+
+### Fixed
+
+- **Eight code-fence lines in `README.md` were `` `@ `` instead of three
+  backticks**, so four blocks (the CSV sample, two shell blocks and the BibTeX
+  citation) rendered as plain text on GitHub.
+- **The README told readers to pin `v0.2.0`**, a tag that does not exist after
+  the history reset. The pin is now `v0.3.0`.
+- **GitHub could not identify the licence.** `LICENSE` carried the data-licence
+  section after the MIT text, which defeats licence detection. `LICENSE` is now
+  the MIT text alone; the CC BY 4.0 data-licence section moved, unchanged, to
+  `LICENSE-DATA`.
+
+### Added
+
+- **`scripts/check_markdown.py`**, run in CI: fails on a `` `@ `` fence line, on
+  an odd number of fences in any tracked Markdown file, and when the tag the
+  README pins differs from the version in `pyproject.toml`.
+- **Dependabot** for pip and GitHub Actions, grouped.
+
+### Changed
+
+- CI actions moved to `actions/checkout@v7` and `actions/setup-python@v7`; the
+  v4/v5 majors target Node 20, which the runners no longer support natively.
+- `CITATION.cff` now carries `version`, and `date-released` is this release.
+
 ## Repository history reset - 2026-10-10
 
 Repository history was reset on 2026-10-10 to remove identifying material from
@@ -25,7 +57,7 @@ The tree itself is unchanged except for the tripwire fix recorded below.
 - The file walk now uses `git ls-files`, so the gitignored private redaction
   blocklist is not reported as a leak by the author's own local run.
 
-## [0.2.0] - 2026-10-10
+## 0.2.0 - 2026-10-10 (untagged; predates the history reset)
 
 ### Breaking
 
@@ -81,9 +113,12 @@ self-assessed gate assignments, in-sample rule derivation, and an `unknown`
 bucket in `duplicate_source` (12 rows) and `preventable_by` (15 rows) that is
 reported rather than guessed away.
 
-## [0.1.0] - 2026-10-08
+## 0.1.0 - 2026-10-08 (untagged; predates the history reset)
 
 ### Added
 
 - Initial release: 97 logged rejections, classified by triage outcome and
   earliest catchable gate.
+
+[Unreleased]: https://github.com/KhomDev/rejection-taxonomy/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/KhomDev/rejection-taxonomy/releases/tag/v0.3.0

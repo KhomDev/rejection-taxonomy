@@ -38,11 +38,11 @@ target dimension: no protocol, no chain, no ecosystem, no date, no severity.
 | `data/summary.json` | every aggregate, computed by `scripts/stats.py` |
 | `data/SCHEMA.md` | every column, every allowed value, and the bucketing rules |
 
-`@csv
+```csv
 id,family_id,bug_family,mechanism_class,triage_class,earliest_gate,root_cause_class,repeat_of_own,duplicate_source,preventable_by
 R-091,F-080,replay,signature_context_binding,duplicate,D1_duplicate_check,duplicate_known_family,false,known_issue,public_record
 R-021,F-021,accounting,accounting_order_of_operations,duplicate,program_ceiling,duplicate_known_family,false,known_issue,none
-`@
+```
 
 ## Headline numbers
 
@@ -154,7 +154,7 @@ An earlier version of this document used `informational` alone (16.5%) as the nu
 
 ## Querying it
 
-`@bash
+```bash
 # what kinds of bugs were rejected as duplicates?
 python scripts/query.py --triage duplicate
 
@@ -175,7 +175,7 @@ python scripts/query.py --mechanism-class replay_scope -v
 
 # any filter, as JSON, for piping
 python scripts/query.py --family oracle --json
-`@
+```
 
 There is no `--paid-only` flag and no `paid` column. Every row in this dataset was rejected, so
 a filter for paid rows would return nothing by construction.
@@ -273,7 +273,7 @@ If you believe a row identifies you or a program you work on, see [Takedown](#ta
 The public corpus is a **derived artifact**. It is generated from a private working database by a
 redaction script that fails closed, and it is never hand-edited:
 
-`@bash
+```bash
 # regenerate the corpus (needs the private inputs)
 python scripts/build_public_export.py \
     --source /path/to/private/_REJECTION_DATABASE.md \
@@ -286,7 +286,7 @@ python scripts/stats.py
 # verify both without any private input
 python scripts/build_public_export.py --check --out data/
 python scripts/stats.py --check
-`@
+```
 
 `build_public_export.py` refuses to write if any value falls outside the allowlist, if a withheld
 row leaks a field, or if a blocked token survives into the output. **Never hand-edit `data/`** -
@@ -313,7 +313,7 @@ GitHub issue tracker).
 
 ## How to cite
 
-`@bibtex
+```bibtex
 @dataset{khomdev_rejection_taxonomy,
   title  = {Bug-bounty rejection taxonomy: 97 logged submissions classified by triage outcome and earliest catchable gate},
   author = {KhomDev},
@@ -321,7 +321,7 @@ GitHub issue tracker).
   url    = {https://github.com/KhomDev/rejection-taxonomy},
   note   = {Rejections only; no positive class. One researcher; see limitations.}
 }
-`@
+```
 
 A machine-readable `CITATION.cff` is in the repository root.
 
@@ -334,7 +334,7 @@ A machine-readable `CITATION.cff` is in the repository root.
   against a draft finding, using *your* private ledger
 
 Pin to a tag, not to `main`:
-[rejection-taxonomy v0.2.0](https://github.com/KhomDev/rejection-taxonomy/tree/v0.2.0).
+[rejection-taxonomy v0.3.0](https://github.com/KhomDev/rejection-taxonomy/tree/v0.3.0).
 
 ## License
 
@@ -345,5 +345,6 @@ Pin to a tag, not to `main`:
 | `docs/`, `README.md` (prose) | CC-BY-4.0 |
 | `redaction-blocklist.PRIVATE.yaml` | not distributed; gitignored |
 
-The `LICENSE` file in the repository root is the MIT text. The dataset's CC-BY-4.0 terms are
-stated here and in `CITATION.cff`.
+The [`LICENSE`](LICENSE) file in the repository root is the MIT text and nothing else, so tools
+that detect licences read it correctly. The dataset's CC-BY-4.0 terms and their scope are in
+[`LICENSE-DATA`](LICENSE-DATA), and are also stated here and in `CITATION.cff`.

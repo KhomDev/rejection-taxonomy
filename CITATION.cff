@@ -1,18 +1,18 @@
 cff-version: 1.2.0
 message: "If you use this dataset, please cite it as below."
-title: "Bug-bounty rejection taxonomy: 97 logged submissions classified by triage outcome and earliest catchable gate"
+title: "Bug-bounty rejection taxonomy: 111 logged submissions classified by triage outcome and earliest catchable gate"
 abstract: >-
-  A personal log of 97 rejected bug-bounty submissions, each classified by the
+  A personal log of 111 rejected bug-bounty submissions, each classified by the
   triage outcome, the earliest gate that could have caught it before submission,
-  and the root-cause class. 71 of 97 (73.2%) were catchable by six pre-hunt gates
+  and the root-cause class. 78 of 111 (70.3%) were catchable by six pre-hunt gates
   alone. The dataset carries no target dimension: no protocol, chain, ecosystem,
   date or severity is published.
 type: dataset
 authors:
   - alias: KhomDev
     name: KhomDev
-version: "0.3.0"
-date-released: 2026-10-14
+version: "0.4.0"
+date-released: 2026-10-20
 license: CC-BY-4.0
 keywords:
   - bug bounty

@@ -87,8 +87,8 @@ def test_data_files_exist():
         assert p.exists(), f"missing {p}"
 
 
-def test_row_count_is_97():
-    assert len(rows()) == 97, f"expected 97 rows, got {len(rows())}"
+def test_row_count_is_111():
+    assert len(rows()) == 111, f"expected 111 rows, got {len(rows())}"
 
 
 def test_json_matches_csv():
@@ -190,8 +190,8 @@ def test_preventable_by_totals_match_summary():
 def test_prehunt_figure_is_correct():
     s = summary()
     catchable = sum(1 for r in rows() if r["earliest_gate"] in PREHUNT_GATES)
-    assert catchable == s["prehunt_catchable"] == 71, catchable
-    assert abs(s["prehunt_catchable_pct"] - 73.2) < 0.05
+    assert catchable == s["prehunt_catchable"] == 78, catchable
+    assert abs(s["prehunt_catchable_pct"] - 70.3) < 0.05
 
 
 def test_effective_n_and_repeats_are_reported():
@@ -208,18 +208,18 @@ def test_effective_n_and_repeats_are_reported():
 def test_analysis_split_is_both_definitions():
     s = summary()["analysis_split"]
     assert s["strict"] == 1, s
-    assert s["broad"] == 32, s
-    assert abs(s["broad_pct"] - 33.0) < 0.05
-    # The old framing published 16.5% and called the remainder "targeting".
-    assert abs(s["old_numerator_pct"] - 16.5) < 0.05
+    assert s["broad"] == 39, s
+    assert abs(s["broad_pct"] - 35.1) < 0.05
+    # The old framing published informational-alone and called the remainder "targeting".
+    assert abs(s["old_numerator_pct"] - 19.8) < 0.05
 
 
 def test_duplicate_gate_counts_are_reconciled():
-    # 36 rows are duplicates by triage outcome; 34 record D1_duplicate_check as
+    # 43 rows are duplicates by triage outcome; 41 record D1_duplicate_check as
     # the earliest catchable gate. Both are published, with their definitions.
     s = summary()
-    assert s["triage"]["duplicate"] == 36
-    assert s["gate"]["D1_duplicate_check"] == 34
+    assert s["triage"]["duplicate"] == 43
+    assert s["gate"]["D1_duplicate_check"] == 41
 
 
 # ---------------------------------------------------------------- README
@@ -314,9 +314,9 @@ def test_documented_vocabulary_sizes_match_the_code():
     # And the counts the prose gives for what is ACTUALLY USED must match.
     used_mech = len({r["mechanism_class"] for r in rows()})
     used_gate = len({r["earliest_gate"] for r in rows()})
-    assert used_mech == 30, used_mech
+    assert used_mech == 33, used_mech
     assert used_gate == 13, used_gate
-    assert "30 are used" in schema
+    assert "33 are used" in schema
     assert "13 are" in schema and "used" in schema
 
 
@@ -342,7 +342,7 @@ def test_readme_states_the_dataset_has_no_positive_class():
 
 def test_readme_does_not_claim_a_wrong_row_count():
     text = README.read_text(encoding="utf-8")
-    assert "97" in text, "README does not state the row count"
+    assert "111" in text, "README does not state the row count"
     assert "121" not in text, "README still mentions the old 121 count"
 
 

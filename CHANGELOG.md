@@ -9,6 +9,34 @@ for anyone consuming `data/`, so it gets a major version.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-20
+
+A data release: **+14 rejections, now 111 rows** (was 97). No schema change, so a
+minor version - every column, vocabulary and withholding rule is unchanged, and
+the export validates against the same allowlist.
+
+### Added
+
+- **14 newly triaged smart-contract rejections** classified onto the existing
+  closed vocabularies (no new `bug_family` or `mechanism_class` was invented to
+  fit a row). After bucketing the batch is 7 `duplicate`, 6 `informational` and
+  1 `intentional_design`.
+- **Two rows reclassified as no-attacker-win (owner decision).** The two rows
+  flagged at review are `informational` with `earliest_gate = P17_no_attacker_win`
+  and `duplicate_source = not_duplicate`, rather than `duplicate`.
+- `other_mechanism` is **no longer empty**: 4 rows landed in the residue class,
+  exactly as the schema said could happen. This is visible in `summary.json`
+  rather than hidden by forcing a closer-but-wrong class.
+
+### Changed
+
+- Regenerated `data/summary.json` and the README generated block from the
+  enlarged `data/rejections.csv`. Headline shifts: effective n 82 -> 96 distinct
+  families; pre-hunt-gate catchable 71/97 (73.2%) -> 78/111 (70.3%); duplicate
+  share 37.1% -> 38.7%; the broad "analysis did not hold up" split 33.0% -> 35.1%.
+- Narrative row counts in `README.md` and `data/SCHEMA.md` updated from 97 to 111
+  (and the derived per-bucket counts) to match the regenerated aggregates.
+
 ## [0.3.0] - 2026-10-14
 
 The first tagged release in this repository. It also contains the history-reset
@@ -120,5 +148,6 @@ reported rather than guessed away.
 - Initial release: 97 logged rejections, classified by triage outcome and
   earliest catchable gate.
 
-[Unreleased]: https://github.com/KhomDev/rejection-taxonomy/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/KhomDev/rejection-taxonomy/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/KhomDev/rejection-taxonomy/releases/tag/v0.4.0
 [0.3.0]: https://github.com/KhomDev/rejection-taxonomy/releases/tag/v0.3.0

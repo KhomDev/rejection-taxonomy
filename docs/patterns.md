@@ -1,13 +1,13 @@
 # What the data says
 
-Six patterns that recur across 97 logged rejections. Each one is something you can check for on
+Six patterns that recur across 111 logged rejections. Each one is something you can check for on
 your next submission, and each is backed by rows you can pull with `scripts/query.py`.
 
 ---
 
 ## 1. Duplication is the largest single outcome, and it is not about your skill
 
-**36 of 97 rejections (37.1%) were duplicates.**
+**43 of 111 rejections (38.7%) were duplicates.**
 
 This is the most demoralising category and the least discussed. It does not mean you missed a bug.
 It means you found a *real* one that someone else found first, or that the team already knew about.
@@ -38,7 +38,7 @@ python scripts/query.py --repeats -v
 
 ## 2. "Valid but unpaid" is a real category, and it is the most expensive one
 
-**3 rows (3.1%) were confirmed valid and paid nothing**, because the program's reward table had no
+**3 rows (2.7%) were confirmed valid and paid nothing**, because the program's reward table had no
 tier at that severity.
 
 ```bash
@@ -64,7 +64,7 @@ this dataset buckets them separately.
 Two honest definitions, because the published "4%" framing was not one:
 
 - **strict** - the impact was fabricated: **1 row**.
-- **broad** - no security impact, intentional design, or fabricated: **32 of 97 (33%)**.
+- **broad** - no security impact, intentional design, or fabricated: **39 of 111 (35.1%)**.
 
 The old framing used the `informational` bucket alone (16.5%) as the numerator and called the
 remaining 83.5% "targeting". That is 100% minus one bucket, and it counts intentional-design rows as
@@ -143,11 +143,11 @@ pre-checking hard.
 
 | Gate | Rows | Runnable before reading code? |
 |---|---:|---|
-| Duplicate / known-family check | 34 | ✅ |
+| Duplicate / known-family check | 41 | ✅ |
 | Exclusion-clause transcription | 20 | ✅ |
-| Intentional design / no-impact review | 12 | ⚠️ needs the finding |
+| Intentional design / no-impact review | 13 | ⚠️ needs the finding |
 | Prior-audit sweep | 7 | ✅ |
-| No-attacker-win analysis | 6 | ⚠️ needs the finding |
+| No-attacker-win analysis | 12 | ⚠️ needs the finding |
 | Payout-tier check | 5 | ✅ |
 | Out-of-scope file tree | 4 | ✅ |
 | Realism gates | 3 | ⚠️ needs the finding |
@@ -157,7 +157,7 @@ pre-checking hard.
 | Cooperating-party exit | 1 | ⚠️ needs the finding |
 | Headline-vs-evidence mismatch | 1 | ⚠️ needs the finding |
 
-**71 of 97 (73.2%) were catchable by a gate you can run before opening an editor.**
+**78 of 111 (70.3%) were catchable by a gate you can run before opening an editor.**
 
 ```bash
 python scripts/query.py --prehunt --json | jq -r '.[].mechanism'
@@ -167,7 +167,7 @@ python scripts/query.py --prehunt --json | jq -r '.[].mechanism'
 
 ## Reading this honestly
 
-- **n = 97, one researcher, four months.** These are proportions in a personal log, not base rates.
+- **n = 111, one researcher, four months.** These are proportions in a personal log, not base rates.
 - **This is a log of failures.** It says nothing about how many submissions succeeded, so no success
   rate can be derived from it.
 - **The gate assignments are self-assessed.** They are the most useful column and the least objective.

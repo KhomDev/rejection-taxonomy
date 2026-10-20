@@ -1,25 +1,25 @@
 {
   "total": 111,
-  "prehunt_catchable": 80,
-  "prehunt_catchable_pct": 72.1,
+  "prehunt_catchable": 78,
+  "prehunt_catchable_pct": 70.3,
   "withheld_rows": 3,
   "effective_n": 96,
   "repeat_rows": 12,
   "repeated_families": 9,
   "largest_family": 4,
   "triage": {
-    "duplicate": 45,
+    "duplicate": 43,
     "out_of_scope": 26,
-    "informational": 20,
+    "informational": 22,
     "intentional_design": 16,
     "below_payout_floor": 3,
     "spam": 1
   },
   "gate": {
-    "D1_duplicate_check": 43,
+    "D1_duplicate_check": 41,
     "G2_exclusion_clause": 20,
     "design_review": 13,
-    "P17_no_attacker_win": 10,
+    "P17_no_attacker_win": 12,
     "G4_prior_audit": 7,
     "G1_severity_floor": 5,
     "G3_scope_tree": 4,
@@ -87,8 +87,8 @@
     "incorrect_formula_or_constant": 1
   },
   "duplicate_source": {
-    "not_duplicate": 63,
-    "known_issue": 27,
+    "not_duplicate": 65,
+    "known_issue": 25,
     "unknown": 12,
     "withheld": 3,
     "prior_audit": 2,
@@ -97,8 +97,8 @@
     "own_prior": 1
   },
   "preventable_by": {
-    "public_record": 60,
-    "none": 32,
+    "public_record": 58,
+    "none": 34,
     "unknown": 15,
     "withheld": 3,
     "own_log": 1
@@ -106,9 +106,9 @@
   "analysis_split": {
     "strict": 1,
     "strict_pct": 0.9,
-    "broad": 37,
-    "broad_pct": 33.3,
-    "old_numerator_pct": 18.0,
-    "old_remainder_pct": 82.0
+    "broad": 39,
+    "broad_pct": 35.1,
+    "old_numerator_pct": 19.8,
+    "old_remainder_pct": 80.2
   }
 }

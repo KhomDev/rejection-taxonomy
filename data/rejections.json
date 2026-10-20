@@ -1168,12 +1168,12 @@
     "family_id": "F-083",
     "bug_family": "liveness",
     "mechanism_class": "other_mechanism",
-    "triage_class": "duplicate",
-    "earliest_gate": "D1_duplicate_check",
-    "root_cause_class": "duplicate_known_family",
+    "triage_class": "informational",
+    "earliest_gate": "P17_no_attacker_win",
+    "root_cause_class": "no_attacker_win",
     "repeat_of_own": false,
-    "duplicate_source": "known_issue",
-    "preventable_by": "public_record"
+    "duplicate_source": "not_duplicate",
+    "preventable_by": "none"
   },
   {
     "id": "R-099",
@@ -1264,12 +1264,12 @@
     "family_id": "F-091",
     "bug_family": "access_control",
     "mechanism_class": "privileged_path_bypass",
-    "triage_class": "duplicate",
-    "earliest_gate": "D1_duplicate_check",
-    "root_cause_class": "duplicate_known_family",
+    "triage_class": "informational",
+    "earliest_gate": "P17_no_attacker_win",
+    "root_cause_class": "no_attacker_win",
     "repeat_of_own": false,
-    "duplicate_source": "known_issue",
-    "preventable_by": "public_record"
+    "duplicate_source": "not_duplicate",
+    "preventable_by": "none"
   },
   {
     "id": "R-107",

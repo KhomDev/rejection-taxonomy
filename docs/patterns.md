@@ -7,7 +7,7 @@ your next submission, and each is backed by rows you can pull with `scripts/quer
 
 ## 1. Duplication is the largest single outcome, and it is not about your skill
 
-**45 of 111 rejections (40.5%) were duplicates.**
+**43 of 111 rejections (38.7%) were duplicates.**
 
 This is the most demoralising category and the least discussed. It does not mean you missed a bug.
 It means you found a *real* one that someone else found first, or that the team already knew about.
@@ -64,7 +64,7 @@ this dataset buckets them separately.
 Two honest definitions, because the published "4%" framing was not one:
 
 - **strict** - the impact was fabricated: **1 row**.
-- **broad** - no security impact, intentional design, or fabricated: **37 of 111 (33.3%)**.
+- **broad** - no security impact, intentional design, or fabricated: **39 of 111 (35.1%)**.
 
 The old framing used the `informational` bucket alone (16.5%) as the numerator and called the
 remaining 83.5% "targeting". That is 100% minus one bucket, and it counts intentional-design rows as
@@ -143,11 +143,11 @@ pre-checking hard.
 
 | Gate | Rows | Runnable before reading code? |
 |---|---:|---|
-| Duplicate / known-family check | 43 | ✅ |
+| Duplicate / known-family check | 41 | ✅ |
 | Exclusion-clause transcription | 20 | ✅ |
 | Intentional design / no-impact review | 13 | ⚠️ needs the finding |
 | Prior-audit sweep | 7 | ✅ |
-| No-attacker-win analysis | 10 | ⚠️ needs the finding |
+| No-attacker-win analysis | 12 | ⚠️ needs the finding |
 | Payout-tier check | 5 | ✅ |
 | Out-of-scope file tree | 4 | ✅ |
 | Realism gates | 3 | ⚠️ needs the finding |
@@ -157,7 +157,7 @@ pre-checking hard.
 | Cooperating-party exit | 1 | ⚠️ needs the finding |
 | Headline-vs-evidence mismatch | 1 | ⚠️ needs the finding |
 
-**80 of 111 (72.1%) were catchable by a gate you can run before opening an editor.**
+**78 of 111 (70.3%) were catchable by a gate you can run before opening an editor.**
 
 ```bash
 python scripts/query.py --prehunt --json | jq -r '.[].mechanism'

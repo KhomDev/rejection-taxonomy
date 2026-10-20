@@ -1,7 +1,7 @@
 # The six pre-hunt gates
 
 Each gate is a question you can answer **before reading a line of code**. Together they account
-for 80 of 111 logged rejections (72.1%) in this dataset.
+for 78 of 111 logged rejections (70.3%) in this dataset.
 
 They are ordered by cost: gate 1 is a single web page, gate 6 needs a git log. Run them in order
 and stop at the first failure.

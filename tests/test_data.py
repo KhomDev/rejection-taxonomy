@@ -190,8 +190,8 @@ def test_preventable_by_totals_match_summary():
 def test_prehunt_figure_is_correct():
     s = summary()
     catchable = sum(1 for r in rows() if r["earliest_gate"] in PREHUNT_GATES)
-    assert catchable == s["prehunt_catchable"] == 80, catchable
-    assert abs(s["prehunt_catchable_pct"] - 72.1) < 0.05
+    assert catchable == s["prehunt_catchable"] == 78, catchable
+    assert abs(s["prehunt_catchable_pct"] - 70.3) < 0.05
 
 
 def test_effective_n_and_repeats_are_reported():
@@ -208,18 +208,18 @@ def test_effective_n_and_repeats_are_reported():
 def test_analysis_split_is_both_definitions():
     s = summary()["analysis_split"]
     assert s["strict"] == 1, s
-    assert s["broad"] == 37, s
-    assert abs(s["broad_pct"] - 33.3) < 0.05
+    assert s["broad"] == 39, s
+    assert abs(s["broad_pct"] - 35.1) < 0.05
     # The old framing published informational-alone and called the remainder "targeting".
-    assert abs(s["old_numerator_pct"] - 18.0) < 0.05
+    assert abs(s["old_numerator_pct"] - 19.8) < 0.05
 
 
 def test_duplicate_gate_counts_are_reconciled():
-    # 45 rows are duplicates by triage outcome; 43 record D1_duplicate_check as
+    # 43 rows are duplicates by triage outcome; 41 record D1_duplicate_check as
     # the earliest catchable gate. Both are published, with their definitions.
     s = summary()
-    assert s["triage"]["duplicate"] == 45
-    assert s["gate"]["D1_duplicate_check"] == 43
+    assert s["triage"]["duplicate"] == 43
+    assert s["gate"]["D1_duplicate_check"] == 41
 
 
 # ---------------------------------------------------------------- README

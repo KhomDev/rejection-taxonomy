@@ -96,7 +96,7 @@ R-094,F-034,access_control,key_binding_missing,duplicate,D1_duplicate_check,dupl
 R-095,F-035,accounting,accounting_bias_direction,out_of_scope,G2_exclusion_clause,oos_exclusion_clause,true,not_duplicate,public_record
 R-096,F-036,config,config_dependent,informational,P17_no_attacker_win,no_attacker_win,true,not_duplicate,none
 R-097,F-082,oracle,oracle_bounds_or_staleness,informational,P17_no_attacker_win,no_attacker_win,false,not_duplicate,none
-R-098,F-083,liveness,other_mechanism,duplicate,D1_duplicate_check,duplicate_known_family,false,known_issue,public_record
+R-098,F-083,liveness,other_mechanism,informational,P17_no_attacker_win,no_attacker_win,false,not_duplicate,none
 R-099,F-084,accounting,other_mechanism,duplicate,D1_duplicate_check,duplicate_known_family,false,known_issue,public_record
 R-100,F-085,accounting,privileged_path_bypass,informational,P17_no_attacker_win,no_attacker_win,false,not_duplicate,none
 R-101,F-086,fees,fee_base_or_ordering,duplicate,D1_duplicate_check,duplicate_known_family,false,known_issue,public_record
@@ -104,7 +104,7 @@ R-102,F-087,oracle,oracle_bounds_or_staleness,duplicate,D1_duplicate_check,dupli
 R-103,F-088,access_control,liveness_block,intentional_design,design_review,intentional_design,false,not_duplicate,none
 R-104,F-089,liveness,liveness_block,duplicate,D1_duplicate_check,duplicate_known_family,false,known_issue,public_record
 R-105,F-090,input_validation,other_mechanism,informational,P17_no_attacker_win,no_attacker_win,false,not_duplicate,none
-R-106,F-091,access_control,privileged_path_bypass,duplicate,D1_duplicate_check,duplicate_known_family,false,known_issue,public_record
+R-106,F-091,access_control,privileged_path_bypass,informational,P17_no_attacker_win,no_attacker_win,false,not_duplicate,none
 R-107,F-092,accounting,other_mechanism,duplicate,D1_duplicate_check,duplicate_known_family,false,known_issue,public_record
 R-108,F-093,accounting,incorrect_formula_or_constant,duplicate,D1_duplicate_check,duplicate_known_family,false,known_issue,public_record
 R-109,F-094,fees,privileged_path_bypass,informational,P17_no_attacker_win,no_attacker_win,false,not_duplicate,none

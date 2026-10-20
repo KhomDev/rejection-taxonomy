@@ -55,9 +55,9 @@ Every table in this section is generated. `scripts/stats.py` rewrites it from
 
 | Triage outcome | Count | Share |
 |---|---:|---:|
-| Duplicate / previously reported | 45 | 40.5% |
+| Duplicate / previously reported | 43 | 38.7% |
 | Out of scope - boundary or exclusion clause | 26 | 23.4% |
-| Informational - no security impact / no attacker profit | 20 | 18.0% |
+| Informational - no security impact / no attacker profit | 22 | 19.8% |
 | Intentional design / not a bug | 16 | 14.4% |
 | Valid, but below the payout floor | 3 | 2.7% |
 | SPAM - fabricated impact contradicted by the PoC | 1 | 0.9% |
@@ -69,10 +69,10 @@ Every table in this section is generated. `scripts/stats.py` rewrites it from
 
 | Earliest gate | Count | Share |
 |---|---:|---:|
-| `D1_duplicate_check` | 43 | 38.7% |
+| `D1_duplicate_check` | 41 | 36.9% |
 | `G2_exclusion_clause` | 20 | 18.0% |
 | `design_review` | 13 | 11.7% |
-| `P17_no_attacker_win` | 10 | 9.0% |
+| `P17_no_attacker_win` | 12 | 10.8% |
 | `G4_prior_audit` | 7 | 6.3% |
 | `G1_severity_floor` | 5 | 4.5% |
 | `G3_scope_tree` | 4 | 3.6% |
@@ -125,8 +125,8 @@ Every table in this section is generated. `scripts/stats.py` rewrites it from
 
 | `duplicate_source` | Count |
 |---|---:|
-| `not_duplicate` | 63 |
-| `known_issue` | 27 |
+| `not_duplicate` | 65 |
+| `known_issue` | 25 |
 | `unknown` | 12 |
 | `withheld` | 3 |
 | `prior_audit` | 2 |
@@ -138,8 +138,8 @@ Every table in this section is generated. `scripts/stats.py` rewrites it from
 
 | `preventable_by` | Count | Share |
 |---|---:|---:|
-| `public_record` | 60 | 54.1% |
-| `none` | 32 | 28.8% |
+| `public_record` | 58 | 52.3% |
+| `none` | 34 | 30.6% |
 | `unknown` | 15 | 13.5% |
 | `withheld` | 3 | 2.7% |
 | `own_log` | 1 | 0.9% |
@@ -149,9 +149,9 @@ Every table in this section is generated. `scripts/stats.py` rewrites it from
 | Definition | Numerator | Count | Share |
 |---|---|---:|---:|
 | **strict** - the impact was fabricated | `spam` | 1 | 0.9% |
-| **broad** - no impact, intentional design, or fabricated | `spam` + `informational` + `intentional_design` | 37 | 33.3% |
+| **broad** - no impact, intentional design, or fabricated | `spam` + `informational` + `intentional_design` | 39 | 35.1% |
 
-An earlier version of this document used `informational` alone (18.0%) as the numerator and called the remaining 82.0% 'targeting'. That is not a definition: it is 100% minus one bucket, and it counts intentional-design rows as targeting failures when they are analysis failures. Both honest definitions are above.
+An earlier version of this document used `informational` alone (19.8%) as the numerator and called the remaining 80.2% 'targeting'. That is not a definition: it is 100% minus one bucket, and it counts intentional-design rows as targeting failures when they are analysis failures. Both honest definitions are above.
 
 <!-- END:generated -->
 
@@ -205,7 +205,7 @@ Read these before quoting any number above.
 7. **Self-assessed labels throughout.** `bug_family`, `root_cause_class`, `duplicate_source`
    and `preventable_by` are all classifications made by the same person who wrote the reports.
 8. **`duplicate_source` and `preventable_by` have an `unknown` bucket, and it is populated.**
-   12 of the 45 duplicate rows and 15 of 111 rows overall are `unknown`: the private log does not
+   12 of the 43 duplicate rows and 15 of 111 rows overall are `unknown`: the private log does not
    support a classification, and guessing was not acceptable. Those counts are reported rather than
    hidden.
 9. **Rule drift.** Programs change their terms. A verdict reflects the rules in force at submission

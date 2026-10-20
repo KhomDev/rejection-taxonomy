@@ -19,8 +19,11 @@ the export validates against the same allowlist.
 
 - **14 newly triaged smart-contract rejections** classified onto the existing
   closed vocabularies (no new `bug_family` or `mechanism_class` was invented to
-  fit a row). After bucketing the batch is 9 `duplicate`, 4 `informational` and
+  fit a row). After bucketing the batch is 7 `duplicate`, 6 `informational` and
   1 `intentional_design`.
+- **Two rows reclassified as no-attacker-win (owner decision).** The two rows
+  flagged at review are `informational` with `earliest_gate = P17_no_attacker_win`
+  and `duplicate_source = not_duplicate`, rather than `duplicate`.
 - `other_mechanism` is **no longer empty**: 4 rows landed in the residue class,
   exactly as the schema said could happen. This is visible in `summary.json`
   rather than hidden by forcing a closer-but-wrong class.
@@ -29,8 +32,8 @@ the export validates against the same allowlist.
 
 - Regenerated `data/summary.json` and the README generated block from the
   enlarged `data/rejections.csv`. Headline shifts: effective n 82 -> 96 distinct
-  families; pre-hunt-gate catchable 71/97 (73.2%) -> 80/111 (72.1%); duplicate
-  share 37.1% -> 40.5%; the broad "analysis did not hold up" split 33.0% -> 33.3%.
+  families; pre-hunt-gate catchable 71/97 (73.2%) -> 78/111 (70.3%); duplicate
+  share 37.1% -> 38.7%; the broad "analysis did not hold up" split 33.0% -> 35.1%.
 - Narrative row counts in `README.md` and `data/SCHEMA.md` updated from 97 to 111
   (and the derived per-bucket counts) to match the regenerated aggregates.
 

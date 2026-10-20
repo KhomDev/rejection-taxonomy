@@ -1,6 +1,6 @@
 # Schema - data/rejections.csv / data/rejections.json
 
-97 rows. One row per rejected submission. **Generated - never hand-edit.** Rebuild with
+111 rows. One row per rejected submission. **Generated - never hand-edit.** Rebuild with
 scripts/build_public_export.py.
 
 ## Columns
@@ -84,9 +84,9 @@ fails closed if any reappears, and --check asserts the schema has not grown them
 Derived by the generator from the private report title, first matching rule wins.
 
 The vocabulary has **34 members**: 32 mechanism classes, the `other_mechanism` residue, and the
-`withheld_valid` sentinel. **30 are used** across the 94 published rows; `other_mechanism` is empty,
-which is a property of this dataset and not a guarantee. The three `below_payout_floor` rows ship
-`withheld_valid`.
+`withheld_valid` sentinel. **33 are used** in the data: 32 across the 108 published rows, plus
+`withheld_valid` on the three withheld rows. `other_mechanism` now holds 4 rows (it was empty
+through 0.3.0). The three `below_payout_floor` rows ship `withheld_valid`.
 
 accounting_bias_direction, accounting_order_of_operations, approval_or_allowance_overwrite,
 boundary_condition_off_by_one, callback_reentrancy_window, config_dependent,
@@ -98,9 +98,9 @@ privileged_path_bypass, replay_scope, reward_dilution, role_asymmetry, rounding_
 secret_material_exposure, self_harm_precondition, signature_context_binding,
 slippage_protection_missing, stale_cached_value, token_classification_assumption, withheld_valid
 
-**One class is a residue.** other_mechanism is the fallback when no rule matches. It is currently
-empty, which is a property of this dataset and not a guarantee; a new row could land there, and that
-would be visible in summary.json rather than hidden.
+**One class is a residue.** other_mechanism is the fallback when no rule matches. It was empty
+through 0.3.0 and now holds 4 rows: a new row landed there rather than being forced into a
+closer-but-wrong class, and that is visible in summary.json rather than hidden.
 
 ### triage_class
 
@@ -154,7 +154,7 @@ UNCLASSIFIED.
 | REALISM | Post-mortem realism gates (attacker-model, configuration, concession, PoC) |
 | UNCLASSIFIED | No gate token recognised - investigate |
 
-**The six pre-hunt gates** - D1_duplicate_check plus G1-G5 - account for 71 of 97 rows (73.2%).
+**The six pre-hunt gates** - D1_duplicate_check plus G1-G5 - account for 80 of 111 rows (72.1%).
 
 There are **17 members** in the vocabulary: 16 gate values plus the `UNCLASSIFIED` sentinel. **13 are
 used** in this dataset.
@@ -167,8 +167,8 @@ reported rather than hidden.
 
 | Value | Meaning | Rows |
 |---|---|---:|
-| not_duplicate | The row was not closed as a duplicate | 58 |
-| known_issue | The team's own known-issues list, or an accepted-risk decision | 18 |
+| not_duplicate | The row was not closed as a duplicate | 63 |
+| known_issue | The team's own known-issues list, or an accepted-risk decision | 27 |
 | unknown | The private log does not say, and guessing was not acceptable | 12 |
 | withheld | The row's payload is withheld | 3 |
 | prior_audit | A published audit covered it | 2 |
@@ -182,7 +182,7 @@ naming the auditor narrows the target set. The pattern now matches the *shape* o
 an audit reference and never the firm, which moved two rows between
 `prior_audit` and `known_issue`.
 
-**12 of 36 duplicate rows are unknown.** That is a real gap in the source record, and the honest
+**12 of 45 duplicate rows are unknown.** That is a real gap in the source record, and the honest
 response is to publish the count rather than to guess a category.
 
 ### preventable_by
@@ -191,8 +191,8 @@ What would have stopped the rejection, from the record.
 
 | Value | Meaning | Rows |
 |---|---|---:|
-| public_record | Readable from the program's own pages, its published audits or its test suite (G1-G5), or from a public duplicate signal | 51 |
-| none | Nothing on file would have caught it; it needs the finding in hand and a judgement about it | 27 |
+| public_record | Readable from the program's own pages, its published audits or its test suite (G1-G5), or from a public duplicate signal | 60 |
+| none | Nothing on file would have caught it; it needs the finding in hand and a judgement about it | 32 |
 | unknown | The log does not support one of the above | 15 |
 | withheld | The row's payload is withheld | 3 |
 | own_log | Only the author's own submission log could have caught it | 1 |
@@ -232,21 +232,21 @@ also rewrites the generated block in the README.
 
 | Metric | Value |
 |---|---:|
-| Rows | 97 |
+| Rows | 111 |
 | Withheld rows | 3 |
-| **Effective n (distinct families)** | **82** |
+| **Effective n (distinct families)** | **96** |
 | Rows repeating an earlier family | 12 |
 | Families submitted more than once | 9 |
 | Largest family | 4 |
-| Duplicate | 36 (37.1%) |
-| Out of scope | 26 (26.8%) |
-| Informational | 16 (16.5%) |
-| Intentional design | 15 (15.5%) |
-| Below payout floor | 3 (3.1%) |
-| SPAM | 1 (1.0%) |
-| Pre-hunt-gate catchable | 71 (73.2%) |
-| Analysis did not hold up - strict (spam only) | 1 (1.0%) |
-| Analysis did not hold up - broad (spam + informational + intentional design) | 32 (33.0%) |
+| Duplicate | 45 (40.5%) |
+| Out of scope | 26 (23.4%) |
+| Informational | 20 (18.0%) |
+| Intentional design | 16 (14.4%) |
+| Below payout floor | 3 (2.7%) |
+| SPAM | 1 (0.9%) |
+| Pre-hunt-gate catchable | 80 (72.1%) |
+| Analysis did not hold up - strict (spam only) | 1 (0.9%) |
+| Analysis did not hold up - broad (spam + informational + intentional design) | 37 (33.3%) |
 
 ## Validation
 

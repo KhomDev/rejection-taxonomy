@@ -1,6 +1,6 @@
 # rejection-taxonomy
 
-**97 logged bug-bounty rejections, classified by triage outcome and by the earliest gate that
+**111 logged bug-bounty rejections, classified by triage outcome and by the earliest gate that
 could have caught each one.**
 
 The dataset contains **rejections only**. It has no positive class: there is no row for a finding
@@ -21,7 +21,7 @@ target dimension: no protocol, no chain, no ecosystem, no date, no severity.
 
 ## What this is not
 
-- **Not a survey.** n = 97, one researcher, four months, one target-selection process.
+- **Not a survey.** n = 111, one researcher, four months, one target-selection process.
 - **Not base rates.** It is a log of failures. It cannot yield a success rate, and it says nothing
   about how many submissions succeeded.
 - **Not a filterable target dataset.** You cannot filter by chain, ecosystem, language or program,
@@ -33,7 +33,7 @@ target dimension: no protocol, no chain, no ecosystem, no date, no severity.
 
 | File | What it is |
 |---|---|
-| `data/rejections.csv` | 97 rows, ten columns, all closed-vocabulary |
+| `data/rejections.csv` | 111 rows, ten columns, all closed-vocabulary |
 | `data/rejections.json` | the same rows, typed (`repeat_of_own` is a boolean here) |
 | `data/summary.json` | every aggregate, computed by `scripts/stats.py` |
 | `data/SCHEMA.md` | every column, every allowed value, and the bucketing rules |
@@ -55,49 +55,51 @@ Every table in this section is generated. `scripts/stats.py` rewrites it from
 
 | Triage outcome | Count | Share |
 |---|---:|---:|
-| Duplicate / previously reported | 36 | 37.1% |
-| Out of scope - boundary or exclusion clause | 26 | 26.8% |
-| Informational - no security impact / no attacker profit | 16 | 16.5% |
-| Intentional design / not a bug | 15 | 15.5% |
-| Valid, but below the payout floor | 3 | 3.1% |
-| SPAM - fabricated impact contradicted by the PoC | 1 | 1.0% |
-| **Total** | **97** | **100%** |
+| Duplicate / previously reported | 45 | 40.5% |
+| Out of scope - boundary or exclusion clause | 26 | 23.4% |
+| Informational - no security impact / no attacker profit | 20 | 18.0% |
+| Intentional design / not a bug | 16 | 14.4% |
+| Valid, but below the payout floor | 3 | 2.7% |
+| SPAM - fabricated impact contradicted by the PoC | 1 | 0.9% |
+| **Total** | **111** | **100%** |
 
-**Effective n: 82 distinct bug families.** 97 rows are not 97 independent observations. 12 rows sit in 9 families that were submitted more than once (the largest family has 4 rows). A family whose first submission predates this log cannot be detected at all, so this is a lower bound on self-duplication.
+**Effective n: 96 distinct bug families.** 111 rows are not 111 independent observations. 12 rows sit in 9 families that were submitted more than once (the largest family has 4 rows). A family whose first submission predates this log cannot be detected at all, so this is a lower bound on self-duplication.
 
 ### Where they died
 
 | Earliest gate | Count | Share |
 |---|---:|---:|
-| `D1_duplicate_check` | 34 | 35.1% |
-| `G2_exclusion_clause` | 20 | 20.6% |
-| `design_review` | 12 | 12.4% |
-| `G4_prior_audit` | 7 | 7.2% |
-| `P17_no_attacker_win` | 6 | 6.2% |
-| `G1_severity_floor` | 5 | 5.2% |
-| `G3_scope_tree` | 4 | 4.1% |
-| `REALISM` | 3 | 3.1% |
-| `P16_below_floor` | 2 | 2.1% |
-| `P19_headline_mismatch` | 1 | 1.0% |
-| `program_ceiling` | 1 | 1.0% |
-| `P20_cooperating_party` | 1 | 1.0% |
-| `G5_test_intent` | 1 | 1.0% |
+| `D1_duplicate_check` | 43 | 38.7% |
+| `G2_exclusion_clause` | 20 | 18.0% |
+| `design_review` | 13 | 11.7% |
+| `P17_no_attacker_win` | 10 | 9.0% |
+| `G4_prior_audit` | 7 | 6.3% |
+| `G1_severity_floor` | 5 | 4.5% |
+| `G3_scope_tree` | 4 | 3.6% |
+| `REALISM` | 3 | 2.7% |
+| `P16_below_floor` | 2 | 1.8% |
+| `P19_headline_mismatch` | 1 | 0.9% |
+| `program_ceiling` | 1 | 0.9% |
+| `P20_cooperating_party` | 1 | 0.9% |
+| `G5_test_intent` | 1 | 0.9% |
 
 ### What kind of bug each row was
 
 | `mechanism_class` | Count |
 |---|---:|
-| `liveness_block` | 9 |
+| `liveness_block` | 13 |
 | `accounting_order_of_operations` | 8 |
 | `parameter_bound_missing` | 8 |
-| `oracle_bounds_or_staleness` | 6 |
+| `oracle_bounds_or_staleness` | 7 |
 | `accounting_bias_direction` | 6 |
+| `privileged_path_bypass` | 5 |
 | `token_classification_assumption` | 5 |
 | `unused_state_flag` | 4 |
 | `key_binding_missing` | 4 |
 | `replay_scope` | 4 |
 | `cross_boundary_message_ordering` | 4 |
 | `missing_zero_check` | 4 |
+| `other_mechanism` | 4 |
 | `signature_context_binding` | 3 |
 | `withheld_valid` | 3 |
 | `role_asymmetry` | 2 |
@@ -107,7 +109,6 @@ Every table in this section is generated. `scripts/stats.py` rewrites it from
 | `panic_without_persisted_impact` | 2 |
 | `missing_consent_or_authorisation` | 2 |
 | `boundary_condition_off_by_one` | 2 |
-| `privileged_path_bypass` | 2 |
 | `missing_input_validation` | 2 |
 | `config_dependent` | 2 |
 | `rounding_direction` | 2 |
@@ -117,13 +118,15 @@ Every table in this section is generated. `scripts/stats.py` rewrites it from
 | `approval_or_allowance_overwrite` | 1 |
 | `self_harm_precondition` | 1 |
 | `callback_reentrancy_window` | 1 |
+| `fee_base_or_ordering` | 1 |
+| `incorrect_formula_or_constant` | 1 |
 
 ### Where the duplicate signal lived
 
 | `duplicate_source` | Count |
 |---|---:|
-| `not_duplicate` | 58 |
-| `known_issue` | 18 |
+| `not_duplicate` | 63 |
+| `known_issue` | 27 |
 | `unknown` | 12 |
 | `withheld` | 3 |
 | `prior_audit` | 2 |
@@ -135,20 +138,20 @@ Every table in this section is generated. `scripts/stats.py` rewrites it from
 
 | `preventable_by` | Count | Share |
 |---|---:|---:|
-| `public_record` | 51 | 52.6% |
-| `none` | 27 | 27.8% |
-| `unknown` | 15 | 15.5% |
-| `withheld` | 3 | 3.1% |
-| `own_log` | 1 | 1.0% |
+| `public_record` | 60 | 54.1% |
+| `none` | 32 | 28.8% |
+| `unknown` | 15 | 13.5% |
+| `withheld` | 3 | 2.7% |
+| `own_log` | 1 | 0.9% |
 
 ### Did the analysis hold up?
 
 | Definition | Numerator | Count | Share |
 |---|---|---:|---:|
-| **strict** - the impact was fabricated | `spam` | 1 | 1.0% |
-| **broad** - no impact, intentional design, or fabricated | `spam` + `informational` + `intentional_design` | 32 | 33.0% |
+| **strict** - the impact was fabricated | `spam` | 1 | 0.9% |
+| **broad** - no impact, intentional design, or fabricated | `spam` + `informational` + `intentional_design` | 37 | 33.3% |
 
-An earlier version of this document used `informational` alone (16.5%) as the numerator and called the remaining 83.5% 'targeting'. That is not a definition: it is 100% minus one bucket, and it counts intentional-design rows as targeting failures when they are analysis failures. Both honest definitions are above.
+An earlier version of this document used `informational` alone (18.0%) as the numerator and called the remaining 82.0% 'targeting'. That is not a definition: it is 100% minus one bucket, and it counts intentional-design rows as targeting failures when they are analysis failures. Both honest definitions are above.
 
 <!-- END:generated -->
 
@@ -191,8 +194,8 @@ Read these before quoting any number above.
    have caught the finding. It is not a record of what any tool said at the time, and a different
    analyst would assign some rows differently. It is the most useful column and the least objective
    one.
-3. **Repeated families.** 12 of 97 rows repeat a family already in the dataset, so the effective
-   sample is 82 families, not 97 rows. Cells with 1-2 rows are anecdotes, not rates.
+3. **Repeated families.** 12 of 111 rows repeat a family already in the dataset, so the effective
+   sample is 96 families, not 111 rows. Cells with 1-2 rows are anecdotes, not rates.
 4. **The rules that cite this dataset were derived from it.** The gate list and the
    `mechanism_class` vocabulary were built by reading these same rows. Any calibration against
    them is **in-sample**: it is closer to a ceiling than to an unbiased estimate.
@@ -202,7 +205,7 @@ Read these before quoting any number above.
 7. **Self-assessed labels throughout.** `bug_family`, `root_cause_class`, `duplicate_source`
    and `preventable_by` are all classifications made by the same person who wrote the reports.
 8. **`duplicate_source` and `preventable_by` have an `unknown` bucket, and it is populated.**
-   12 of the 36 duplicate rows and 15 of 97 rows overall are `unknown`: the private log does not
+   12 of the 45 duplicate rows and 15 of 111 rows overall are `unknown`: the private log does not
    support a classification, and guessing was not acceptable. Those counts are reported rather than
    hidden.
 9. **Rule drift.** Programs change their terms. A verdict reflects the rules in force at submission
@@ -214,7 +217,7 @@ Read these before quoting any number above.
 The dataset carries **no target dimension** and **no free text**.
 
 An earlier draft of this repository published `chain` and `ecosystem`, on the theory that
-withholding the protocol name was enough. It is not. With 97 rows across a few dozen targets,
+withholding the protocol name was enough. It is not. With 111 rows across a few dozen targets,
 `chain` + `ecosystem` + outcome + gate is a join key - a fingerprint, not an anonymisation. An
 earlier revision then replaced those columns with a free-text `mechanism` description validated
 against a denylist. That was better, but it was still a hole: a denylist cannot catch a paraphrase.
@@ -315,7 +318,7 @@ GitHub issue tracker).
 
 ```bibtex
 @dataset{khomdev_rejection_taxonomy,
-  title  = {Bug-bounty rejection taxonomy: 97 logged submissions classified by triage outcome and earliest catchable gate},
+  title  = {Bug-bounty rejection taxonomy: 111 logged submissions classified by triage outcome and earliest catchable gate},
   author = {KhomDev},
   year   = {2026},
   url    = {https://github.com/KhomDev/rejection-taxonomy},
@@ -334,7 +337,7 @@ A machine-readable `CITATION.cff` is in the repository root.
   against a draft finding, using *your* private ledger
 
 Pin to a tag, not to `main`:
-[rejection-taxonomy v0.3.0](https://github.com/KhomDev/rejection-taxonomy/tree/v0.3.0).
+[rejection-taxonomy v0.4.0](https://github.com/KhomDev/rejection-taxonomy/tree/v0.4.0).
 
 ## License
 

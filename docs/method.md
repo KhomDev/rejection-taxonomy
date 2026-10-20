@@ -1,6 +1,6 @@
 # Method
 
-How the 97 rows were classified, what the classification can and cannot support, and why the
+How the 111 rows were classified, what the classification can and cannot support, and why the
 dataset is shaped the way it is.
 
 ---
@@ -59,7 +59,7 @@ analysis is a minority.
 ## What it cannot support
 
 ❌ **Any inference about a specific program.** There is no target axis by design.
-❌ **Statistical claims about the field.** n=97, one researcher, four months, one selection process.
+❌ **Statistical claims about the field.** n=111, one researcher, four months, one selection process.
 ❌ **Claims about base rates.** This is a log of *failures*. It says nothing about how many
 submissions succeeded, so it cannot yield a success rate.
 ❌ **Comparisons across chains or languages.** Those columns do not exist here.
@@ -83,7 +83,7 @@ submissions succeeded, so it cannot yield a success rate.
 The dataset carries **no target dimension**: no protocol, chain, ecosystem, date or severity.
 
 An earlier draft published `chain` and `ecosystem`, on the theory that withholding the protocol
-name was sufficient. It is not. With 97 rows across a few dozen targets, chain + ecosystem +
+name was sufficient. It is not. With 111 rows across a few dozen targets, chain + ecosystem +
 outcome + gate is a **join key** — a fingerprint, not an anonymisation. The columns were removed
 and the `--check` mode now fails if they reappear.
 

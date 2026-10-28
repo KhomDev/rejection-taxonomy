@@ -1,6 +1,6 @@
 # Schema - data/rejections.csv / data/rejections.json
 
-111 rows. One row per rejected submission. **Generated - never hand-edit.** Rebuild with
+113 rows. One row per rejected submission. **Generated - never hand-edit.** Rebuild with
 scripts/build_public_export.py.
 
 ## Columns
@@ -84,7 +84,7 @@ fails closed if any reappears, and --check asserts the schema has not grown them
 Derived by the generator from the private report title, first matching rule wins.
 
 The vocabulary has **34 members**: 32 mechanism classes, the `other_mechanism` residue, and the
-`withheld_valid` sentinel. **33 are used** in the data: 32 across the 108 published rows, plus
+`withheld_valid` sentinel. **33 are used** in the data: 32 across the 110 published rows, plus
 `withheld_valid` on the three withheld rows. `other_mechanism` now holds 4 rows (it was empty
 through 0.3.0). The three `below_payout_floor` rows ship `withheld_valid`.
 
@@ -154,7 +154,7 @@ UNCLASSIFIED.
 | REALISM | Post-mortem realism gates (attacker-model, configuration, concession, PoC) |
 | UNCLASSIFIED | No gate token recognised - investigate |
 
-**The six pre-hunt gates** - D1_duplicate_check plus G1-G5 - account for 78 of 111 rows (70.3%).
+**The six pre-hunt gates** - D1_duplicate_check plus G1-G5 - account for 78 of 113 rows (69.0%).
 
 There are **17 members** in the vocabulary: 16 gate values plus the `UNCLASSIFIED` sentinel. **13 are
 used** in this dataset.
@@ -167,7 +167,7 @@ reported rather than hidden.
 
 | Value | Meaning | Rows |
 |---|---|---:|
-| not_duplicate | The row was not closed as a duplicate | 65 |
+| not_duplicate | The row was not closed as a duplicate | 67 |
 | known_issue | The team's own known-issues list, or an accepted-risk decision | 25 |
 | unknown | The private log does not say, and guessing was not acceptable | 12 |
 | withheld | The row's payload is withheld | 3 |
@@ -192,7 +192,7 @@ What would have stopped the rejection, from the record.
 | Value | Meaning | Rows |
 |---|---|---:|
 | public_record | Readable from the program's own pages, its published audits or its test suite (G1-G5), or from a public duplicate signal | 58 |
-| none | Nothing on file would have caught it; it needs the finding in hand and a judgement about it | 34 |
+| none | Nothing on file would have caught it; it needs the finding in hand and a judgement about it | 36 |
 | unknown | The log does not support one of the above | 15 |
 | withheld | The row's payload is withheld | 3 |
 | own_log | Only the author's own submission log could have caught it | 1 |
@@ -232,21 +232,21 @@ also rewrites the generated block in the README.
 
 | Metric | Value |
 |---|---:|
-| Rows | 111 |
+| Rows | 113 |
 | Withheld rows | 3 |
-| **Effective n (distinct families)** | **96** |
+| **Effective n (distinct families)** | **98** |
 | Rows repeating an earlier family | 12 |
 | Families submitted more than once | 9 |
 | Largest family | 4 |
-| Duplicate | 43 (38.7%) |
-| Out of scope | 26 (23.4%) |
-| Informational | 22 (19.8%) |
-| Intentional design | 16 (14.4%) |
+| Duplicate | 43 (38.1%) |
+| Out of scope | 26 (23.0%) |
+| Informational | 24 (21.2%) |
+| Intentional design | 16 (14.2%) |
 | Below payout floor | 3 (2.7%) |
 | SPAM | 1 (0.9%) |
-| Pre-hunt-gate catchable | 78 (70.3%) |
+| Pre-hunt-gate catchable | 78 (69.0%) |
 | Analysis did not hold up - strict (spam only) | 1 (0.9%) |
-| Analysis did not hold up - broad (spam + informational + intentional design) | 39 (35.1%) |
+| Analysis did not hold up - broad (spam + informational + intentional design) | 41 (36.3%) |
 
 ## Validation
 

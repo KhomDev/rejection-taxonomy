@@ -1,13 +1,13 @@
 # What the data says
 
-Six patterns that recur across 111 logged rejections. Each one is something you can check for on
+Six patterns that recur across 113 logged rejections. Each one is something you can check for on
 your next submission, and each is backed by rows you can pull with `scripts/query.py`.
 
 ---
 
 ## 1. Duplication is the largest single outcome, and it is not about your skill
 
-**43 of 111 rejections (38.7%) were duplicates.**
+**43 of 113 rejections (38.1%) were duplicates.**
 
 This is the most demoralising category and the least discussed. It does not mean you missed a bug.
 It means you found a *real* one that someone else found first, or that the team already knew about.
@@ -64,7 +64,7 @@ this dataset buckets them separately.
 Two honest definitions, because the published "4%" framing was not one:
 
 - **strict** - the impact was fabricated: **1 row**.
-- **broad** - no security impact, intentional design, or fabricated: **39 of 111 (35.1%)**.
+- **broad** - no security impact, intentional design, or fabricated: **41 of 113 (36.3%)**.
 
 The old framing used the `informational` bucket alone (16.5%) as the numerator and called the
 remaining 83.5% "targeting". That is 100% minus one bucket, and it counts intentional-design rows as
@@ -157,7 +157,7 @@ pre-checking hard.
 | Cooperating-party exit | 1 | ⚠️ needs the finding |
 | Headline-vs-evidence mismatch | 1 | ⚠️ needs the finding |
 
-**78 of 111 (70.3%) were catchable by a gate you can run before opening an editor.**
+**78 of 113 (69.0%) were catchable by a gate you can run before opening an editor.**
 
 ```bash
 python scripts/query.py --prehunt --json | jq -r '.[].mechanism'
@@ -167,7 +167,7 @@ python scripts/query.py --prehunt --json | jq -r '.[].mechanism'
 
 ## Reading this honestly
 
-- **n = 111, one researcher, four months.** These are proportions in a personal log, not base rates.
+- **n = 113, one researcher, four months.** These are proportions in a personal log, not base rates.
 - **This is a log of failures.** It says nothing about how many submissions succeeded, so no success
   rate can be derived from it.
 - **The gate assignments are self-assessed.** They are the most useful column and the least objective.

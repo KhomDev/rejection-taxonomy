@@ -87,8 +87,8 @@ def test_data_files_exist():
         assert p.exists(), f"missing {p}"
 
 
-def test_row_count_is_111():
-    assert len(rows()) == 111, f"expected 111 rows, got {len(rows())}"
+def test_row_count_is_113():
+    assert len(rows()) == 113, f"expected 113 rows, got {len(rows())}"
 
 
 def test_json_matches_csv():
@@ -191,7 +191,7 @@ def test_prehunt_figure_is_correct():
     s = summary()
     catchable = sum(1 for r in rows() if r["earliest_gate"] in PREHUNT_GATES)
     assert catchable == s["prehunt_catchable"] == 78, catchable
-    assert abs(s["prehunt_catchable_pct"] - 70.3) < 0.05
+    assert abs(s["prehunt_catchable_pct"] - 69.0) < 0.05
 
 
 def test_effective_n_and_repeats_are_reported():
@@ -208,10 +208,10 @@ def test_effective_n_and_repeats_are_reported():
 def test_analysis_split_is_both_definitions():
     s = summary()["analysis_split"]
     assert s["strict"] == 1, s
-    assert s["broad"] == 39, s
-    assert abs(s["broad_pct"] - 35.1) < 0.05
+    assert s["broad"] == 41, s
+    assert abs(s["broad_pct"] - 36.3) < 0.05
     # The old framing published informational-alone and called the remainder "targeting".
-    assert abs(s["old_numerator_pct"] - 19.8) < 0.05
+    assert abs(s["old_numerator_pct"] - 21.2) < 0.05
 
 
 def test_duplicate_gate_counts_are_reconciled():
@@ -342,7 +342,7 @@ def test_readme_states_the_dataset_has_no_positive_class():
 
 def test_readme_does_not_claim_a_wrong_row_count():
     text = README.read_text(encoding="utf-8")
-    assert "111" in text, "README does not state the row count"
+    assert "113" in text, "README does not state the row count"
     assert "121" not in text, "README still mentions the old 121 count"
 
 

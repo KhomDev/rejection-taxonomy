@@ -1330,5 +1330,29 @@
     "repeat_of_own": false,
     "duplicate_source": "not_duplicate",
     "preventable_by": "none"
+  },
+  {
+    "id": "R-112",
+    "family_id": "F-097",
+    "bug_family": "liveness",
+    "mechanism_class": "liveness_block",
+    "triage_class": "informational",
+    "earliest_gate": "P17_no_attacker_win",
+    "root_cause_class": "no_attacker_win",
+    "repeat_of_own": false,
+    "duplicate_source": "not_duplicate",
+    "preventable_by": "none"
+  },
+  {
+    "id": "R-113",
+    "family_id": "F-098",
+    "bug_family": "liveness",
+    "mechanism_class": "liveness_block",
+    "triage_class": "informational",
+    "earliest_gate": "P17_no_attacker_win",
+    "root_cause_class": "no_attacker_win",
+    "repeat_of_own": false,
+    "duplicate_source": "not_duplicate",
+    "preventable_by": "none"
   }
 ]

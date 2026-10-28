@@ -1,11 +1,16 @@
-## Data licence
+## Data and documentation licence
 
-The files under `data/` are licensed under the Creative Commons Attribution 4.0
+The published dataset under `data/` and the repository's prose (`docs/` and
+`README.md`) are licensed under the Creative Commons Attribution 4.0
 International licence (CC BY 4.0):
 https://creativecommons.org/licenses/by/4.0/
 
-You may share and adapt the data for any purpose, including commercially,
-provided you give appropriate credit.
+You may share and adapt the data and the prose for any purpose, including
+commercially, provided you give appropriate credit.
+
+The code under `scripts/` and `tests/` is licensed separately under the MIT
+licence; see [`LICENSE`](LICENSE). This file governs only the data and the
+prose, so that licence-detection tools read the root `LICENSE` as plain MIT.
 
 ## Scope of the data licence
 

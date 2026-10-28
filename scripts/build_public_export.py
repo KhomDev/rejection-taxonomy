@@ -351,8 +351,46 @@ ROW_BUG_FAMILY: dict[int, str] = {
     85: "fees", 86: "token_integration", 87: "token_integration", 88: "token_integration",
     89: "access_control", 90: "state_machine", 91: "replay", 92: "replay",
     93: "input_validation", 94: "access_control", 95: "accounting", 96: "config",
-    97: "oracle",
+    97: "oracle", 98: "liveness", 99: "accounting", 100: "accounting",
+    101: "fees", 102: "oracle", 103: "access_control", 104: "liveness",
+    105: "input_validation", 106: "access_control", 107: "accounting",
+    108: "accounting", 109: "fees", 110: "signature_binding", 111: "accounting",
+    112: "liveness", 113: "liveness",
 }
+
+
+# --------------------------------------------------------------------------
+# Owner reclassification overrides.
+#
+# A handful of rows carry a published classification the owner set by judgement
+# rather than one derived from the private record's triage/gate/root-cause
+# cells. The private record states the mechanical outcome (e.g. "duplicate of a
+# known family"); the owner decided the rejection is better described another
+# way (e.g. the finding simply has no attacker-win, so the duplicate framing is
+# incidental). To keep the build reproducible, the decision lives here and is
+# applied to the raw cells BEFORE classification, so re-running the build from
+# source yields the published data byte-for-byte instead of regressing it.
+#
+# Each entry maps a 1-based private-row index to the raw cells it replaces
+# (3 = triage, 4 = earliest gate, 5 = root cause). No target information is
+# carried; the replacement text is generic and documents the decision only.
+#
+#   R-098, R-106: reclassified duplicate -> no-attacker-win (owner decision,
+#   recorded in release/v0.4.0). The private record still reads "duplicate" for
+#   both; if that record is later updated to match, these entries become no-ops
+#   and can be dropped.
+ROW_OWNER_OVERRIDE: dict[int, dict[int, str]] = {
+    98: {3: "Informative", 4: "57 P17 (no attacker-win)", 5: "No attacker-win [owner reclassification]"},
+    106: {3: "Informative", 4: "57 P17 (no attacker-win)", 5: "No attacker-win [owner reclassification]"},
+}
+
+
+def apply_owner_overrides(raw_rows: list[list[str]]) -> None:
+    """Apply ROW_OWNER_OVERRIDE to the parsed rows, in place."""
+    for one_based, cells in ROW_OWNER_OVERRIDE.items():
+        if one_based - 1 < len(raw_rows):
+            for col, value in cells.items():
+                raw_rows[one_based - 1][col] = value
 
 
 # --------------------------------------------------------------------------
@@ -756,6 +794,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"ERROR: no rows parsed from {args.source}", file=sys.stderr)
         return 2
 
+    apply_owner_overrides(raw_rows)
     public = build_rows(raw_rows)
     problems = validate_rows(public)
 

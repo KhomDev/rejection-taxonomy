@@ -110,3 +110,5 @@ R-108,F-093,accounting,incorrect_formula_or_constant,duplicate,D1_duplicate_chec
 R-109,F-094,fees,privileged_path_bypass,informational,P17_no_attacker_win,no_attacker_win,false,not_duplicate,none
 R-110,F-095,signature_binding,liveness_block,duplicate,D1_duplicate_check,duplicate_known_family,false,known_issue,public_record
 R-111,F-096,accounting,liveness_block,informational,P17_no_attacker_win,no_attacker_win,false,not_duplicate,none
+R-112,F-097,liveness,liveness_block,informational,P17_no_attacker_win,no_attacker_win,false,not_duplicate,none
+R-113,F-098,liveness,liveness_block,informational,P17_no_attacker_win,no_attacker_win,false,not_duplicate,none

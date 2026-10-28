@@ -9,6 +9,37 @@ for anyone consuming `data/`, so it gets a major version.
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-28
+
+A data release: **+2 rejections, now 113 rows** (was 111). No schema change, so a
+minor version - every column, vocabulary and withholding rule is unchanged, and
+the export validates against the same allowlist.
+
+### Added
+
+- **2 newly triaged smart-contract rejections** classified onto the existing
+  closed vocabularies (no new `bug_family` or `mechanism_class` was invented to
+  fit a row). Both are `informational` with `earliest_gate = P17_no_attacker_win`
+  (a permanent-liveness wedge with no attacker-win scenario), landing in the
+  `liveness` bug family and the `liveness_block` mechanism class.
+- The headline split moves with the data: `informational` is now 24 (was 22),
+  pre-hunt-catchable is 78 of 113 (69.0%, was 70.3%), and the effective sample is
+  98 distinct families (was 96). The duplicate buckets are unchanged (43 by
+  triage, 41 at `D1_duplicate_check`).
+
+### Changed
+
+- **The build is now reproducible from source.** `scripts/build_public_export.py`
+  gained the `ROW_BUG_FAMILY` entries for rows 98-113 and a documented
+  `ROW_OWNER_OVERRIDE` table, so re-running the build against the private source
+  regenerates the published `data/` byte-for-byte. Previously the 0.4.0 data
+  carried per-row classifications (the rows-98-111 families and the two
+  owner-reclassified rows) that the committed script could not reproduce.
+- **License wording reconciled.** `LICENSE-DATA` previously scoped CC BY 4.0 to
+  `data/` only, while the README listed `docs/` and `README.md` as CC-BY-4.0 too.
+  `LICENSE-DATA` now states the CC-BY-4.0 scope covers the published dataset and
+  the prose, with code remaining MIT under `LICENSE`.
+
 ## [0.4.0] - 2026-10-20
 
 A data release: **+14 rejections, now 111 rows** (was 97). No schema change, so a

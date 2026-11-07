@@ -19,6 +19,8 @@ A derived, redacted dataset. One row per rejected submission, reduced to categor
 Every value is a member of a closed vocabulary. There is no free text in the published data and no
 target dimension: no protocol, no chain, no ecosystem, no date, no severity.
 
+A line-level technical companion to this repository is [CODE_GUIDE.md](CODE_GUIDE.md).
+
 ## What this is not
 
 - **Not a survey.** n = 113, one researcher, one target-selection process.

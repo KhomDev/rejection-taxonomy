@@ -492,7 +492,8 @@ Defence in depth for the maintainer only: both modes need the private log, and n
 
 - `iter_markdown() -> list[Path]` (`:77-85`): tracked Markdown only, so private local notes are
   never read.
-- `LINK_RE` (`:26`) captures `[...](...)`; web and mailto schemes are skipped (`:30`, `:53`). A
+- `LINK_RE` (`:26`) captures a markdown link, bracketed text followed by a parenthesised
+  target; web and mailto schemes are skipped (`:30`, `:53`). A
   relative target must resolve (`:61-63`). A `#fragment` on a `.md` target is checked against the
   target's headings (`:65-73`), where `headings(text)` (`:33-42`) lowercases, strips characters
   other than letters, digits, space, hyphen and underscore, and turns spaces into hyphens.

@@ -1,12 +1,12 @@
 # rejection-taxonomy - code guide
 
-Accurate for release **v0.6.0** at main commit `4212b246e562f48c10814495e13737366ac5d8a5`. This
-document is a line-level walkthrough of the code and data: the technical companion to
-[README.md](README.md), which explains what the dataset is; this explains how every part of it works.
-All `path:line` references were checked against that commit, where `git describe --tags --abbrev=0`
-prints `v0.6.0` and `pyproject.toml:3` records `version = "0.6.0"`. Every count in this guide was
-computed from `data/rejections.csv` at that commit and cross-checked against `data/summary.json`,
-which `scripts/stats.py --check` proves is current.
+Written against the v0.6.0 tree at commit `4212b246e562f48c10814495e13737366ac5d8a5` and
+re-checked for release **v0.6.1**: that release is documentation-only, and `data/` is
+byte-identical to v0.6.0 (`git diff v0.6.0..v0.6.1 -- data/` is empty), so the data references
+below are unchanged. This document is a line-level walkthrough of the code and data: the
+technical companion to [README.md](README.md), which explains what the dataset is; this explains
+how every part of it works. Every count in this guide was computed from `data/rejections.csv` and
+cross-checked against `data/summary.json`, which `scripts/stats.py --check` proves is current.
 
 ## 1. Repository layout
 
@@ -635,11 +635,11 @@ and `test (windows-latest, 3.12)` per the `name:` template at `:21`, alongside `
   removed or renamed - is a breaking change and gets a major version; a change to which rows hold
   which values is a data release and gets a minor version. `CHANGELOG.md` follows Keep a Changelog
   and SemVer (`:3-5`).
-- The current release is `[0.6.0] - 2026-11-06` (`CHANGELOG.md:14`), and four artifacts must agree
-  on it, enforced by `scripts/check_markdown.py:63-84`: `pyproject.toml:3` (`0.6.0`),
-  `CITATION.cff:17` (`version: "0.6.0"`), the newest `CHANGELOG.md` heading (`:14`), and the
-  README tag link `rejection-taxonomy/tree/v0.6.0` (`README.md:379`). `CITATION.cff:18` carries
-  `date-released: 2026-11-06`, which must equal the CHANGELOG heading's date.
+- The current release is `[0.6.1] - 2026-11-10` (`CHANGELOG.md:14`), and four artifacts must agree
+  on it, enforced by `scripts/check_markdown.py:63-84`: `pyproject.toml:3` (`0.6.1`),
+  `CITATION.cff:17` (`version: "0.6.1"`), the newest `CHANGELOG.md` heading (`:14`), and the
+  README tag link `rejection-taxonomy/tree/v0.6.1` (`README.md:386`). `CITATION.cff:18` carries
+  `date-released: 2026-11-10`, which must equal the CHANGELOG heading's date.
 - A commit that changes published numbers must say which numbers changed and why, and update
   `CSV_SHA256` in `tests/test_data.py` (`CONTRIBUTING.md:51-54`).
 - `data/provenance.json` digests the private source, classifier and ledger each release was built

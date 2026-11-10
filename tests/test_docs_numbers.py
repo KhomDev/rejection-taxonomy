@@ -55,6 +55,23 @@ CLAIMS: dict[str, list[str]] = {
     "data/SCHEMA.md": [
         f"Closed vocabulary of {len(vocab.BUG_FAMILIES)} families",
     ],
+    "docs/representativeness.md": [
+        f"{S['withheld_rows']} rows are withheld",
+        f"{T} logged rejections",
+        f"{T} rows",
+        f"{S['public_record_preventable']} of {T} ({S['public_record_preventable_pct']}%)",
+        f"{S['public_record_preventable_pct']}% of failures",
+        f"{S['prehunt_catchable']} rows ({S['prehunt_catchable_pct']}%)",
+        f"{S['effective_n']} distinct bug families",
+        f"{S['published_rows']} of which publish a family",
+        f"{S['repeat_rows']} rows repeat a family",
+        f"{S['rows_in_repeated_families']} rows in {S['repeated_families']} families",
+        f"largest has {S['largest_family']} rows",
+        f"{S['mechanism_classes_used']} of the 32 mechanism classes",
+        f"{S['singleton_mechanism_classes']} of them by a single row",
+        f"{S['unique_category_tuples']} of {T} rows",
+        f"n = {T}, one researcher",
+    ],
     "docs/method.md": [
         f"n = {T}, one researcher",
     ],

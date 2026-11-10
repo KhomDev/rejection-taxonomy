@@ -200,6 +200,11 @@ This is a dataset with scripts, not an installable package. Run the scripts from
 Read these before quoting any number above. The counts behind them are in the generated
 *Sample size and identifiability* section.
 
+The full representativeness argument - what this log is a sample of, why the absence of a
+positive class rules out every rate, the effective sample size, the identifiability limits, and the
+pre-registered protocol for an external replication - is in
+[docs/representativeness.md](docs/representativeness.md).
+
 1. **No positive class.** The dataset is a log of rejections. It contains no paid finding, so it
    cannot produce a success rate, a precision, or a base rate.
 2. **`earliest_gate` is self-assessed.** It is the author's post-hoc judgement of what *would*
@@ -359,7 +364,7 @@ people took of them, cannot be recalled. That limit is stated here rather than h
   title   = {Bug-bounty rejection taxonomy: 113 logged submissions classified by triage outcome and earliest catchable gate},
   author  = {KhomDev},
   year    = {2026},
-  version = {0.6.0},
+  version = {0.6.1},
   url     = {https://github.com/KhomDev/rejection-taxonomy},
   note    = {Rejections only; no positive class. One researcher; see limitations.}
 }
@@ -378,7 +383,7 @@ A machine-readable `CITATION.cff` is in the repository root.
   tests: does the proof of concept show what an unprivileged attacker can do
 
 Pin to a tag, not to `main`:
-[rejection-taxonomy v0.6.0](https://github.com/KhomDev/rejection-taxonomy/tree/v0.6.0).
+[rejection-taxonomy v0.6.1](https://github.com/KhomDev/rejection-taxonomy/tree/v0.6.1).
 
 ## License
 

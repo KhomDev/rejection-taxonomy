@@ -11,6 +11,38 @@ values is a data release and gets a minor version.
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-11-10
+
+A documentation release. **No data change**: `data/` is byte-identical to v0.6.0,
+the schema and vocabularies are unchanged, and every published count is unchanged.
+The version bump exists so the new document carries a tag and a citable release.
+
+### Added
+
+- **`docs/representativeness.md`** - the argument the README's Known limitations
+  section asserts but does not make: the sampling frame, the target-selection
+  process, one-researcher bias, what the absence of a positive class rules out,
+  effective n and repeated families, in-sample rule derivation, identifiability
+  limits, a table of what the dataset can and cannot support, a pre-registered
+  external replication protocol (what to hold fixed, what to measure, how to pool
+  or refuse to pool), and the evidence that would change the conclusions.
+- Linked from the README's Known limitations section and from `docs/method.md`.
+
+### Changed
+
+- `pyproject.toml`, `CITATION.cff` and the README's pin and citation examples
+  move to 0.6.1. `CITATION.cff` `date-released` is this release's date.
+- `tests/test_docs_numbers.py` registers the new page, so every number in it is
+  pinned to `data/summary.json` like the rest of the prose.
+
+### Verified
+
+- `git diff v0.6.0..v0.6.1 -- data/` is empty; `scripts/build_public_export.py
+  --check` and `scripts/stats.py --check` pass unchanged.
+- The full check set in CI passes locally: `pytest` (131 tests), `ruff check .`,
+  `check_links.py`, `check_markdown.py`, `check_hygiene.py --no-history`, the
+  fixture build, and both `--check` scripts.
+
 ## [0.6.0] - 2026-11-06
 
 A data and disclosure release. Still 113 rows, the same ten columns, and the same
@@ -314,5 +346,6 @@ reported rather than guessed away.
 - Initial release: 97 logged rejections, classified by triage outcome and
   earliest catchable gate.
 
-[Unreleased]: https://github.com/KhomDev/rejection-taxonomy/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/KhomDev/rejection-taxonomy/compare/v0.6.1...HEAD
+[0.6.1]: https://github.com/KhomDev/rejection-taxonomy/releases/tag/v0.6.1
 [0.6.0]: https://github.com/KhomDev/rejection-taxonomy/releases/tag/v0.6.0

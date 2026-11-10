@@ -71,6 +71,9 @@ and writes `data/`. The derivation rules are short, public and tested; SCHEMA.md
 5. **Small n per cell.** Several `earliest_gate` values have one or two rows. Those cells are
    anecdotes, not rates.
 
+The full argument, the effective sample size, the identifiability limits, and a pre-registered
+external replication protocol are in [representativeness.md](representativeness.md).
+
 ## The privacy model
 
 The dataset carries **no target dimension**: no protocol, chain, ecosystem, date or severity.

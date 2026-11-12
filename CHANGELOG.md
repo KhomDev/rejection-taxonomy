@@ -11,6 +11,21 @@ values is a data release and gets a minor version.
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-11-12
+
+**Final release. The repository is archived.** The dataset was consolidated into
+[priorart](https://github.com/KhomDev/priorart) as `data/rejections/`. **No data change:** the 113
+rows, the ten columns, every published count and the vocabularies are byte-identical to v0.6.1, and
+`data/summary.json` keeps its 0.5.x keys so the khomdev.org check keeps working. The licence
+(`LICENSE-DATA`, CC-BY-4.0) travels with the rows, and `CITATION.cff` travels with them.
+
+### Changed
+
+- **Moved to priorart/data/rejections/.** Same rows, same columns, same licence. The vocabulary
+  (`earliest_gate`, `preventable_by`) becomes priorart's descriptive layer and regression fixtures,
+  not its headline evidence.
+- The README carries the migration banner. Nothing in `data/` changed in this release.
+
 ## [0.6.1] - 2026-11-10
 
 A documentation release. **No data change**: `data/` is byte-identical to v0.6.0,

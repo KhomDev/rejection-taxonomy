@@ -14,8 +14,8 @@ type: dataset
 authors:
   - alias: KhomDev
     name: KhomDev
-version: "0.6.1"
-date-released: 2026-11-10
+version: "0.7.0"
+date-released: 2026-11-12
 license: CC-BY-4.0
 repository-code: https://github.com/KhomDev/rejection-taxonomy
 keywords:

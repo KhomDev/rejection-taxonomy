@@ -1,5 +1,12 @@
 # rejection-taxonomy
 
+> **Archived 2026-11-12 — moved to [priorart](https://github.com/KhomDev/priorart).**
+> The same rows, columns and licence now ship as `priorart/data/rejections/` (CSV, JSON,
+> `summary.json`, `SCHEMA.md`, `LICENSE-DATA`), and the vocabulary (`earliest_gate`,
+> `preventable_by`) is the descriptive layer for `priorart`'s gates. **`data/README` keys and
+> `data/summary.json` keys are unchanged** — the khomdev.org check keeps reading this repository's
+> `main` until the site is repointed. This repository stays readable; it receives no new work.
+
 **113 logged bug-bounty rejections, classified by triage outcome and by the earliest gate that
 could have caught each one.**
 
@@ -383,7 +390,7 @@ A machine-readable `CITATION.cff` is in the repository root.
   tests: does the proof of concept show what an unprivileged attacker can do
 
 Pin to a tag, not to `main`:
-[rejection-taxonomy v0.6.1](https://github.com/KhomDev/rejection-taxonomy/tree/v0.6.1).
+[rejection-taxonomy v0.7.0](https://github.com/KhomDev/rejection-taxonomy/tree/v0.7.0).
 
 ## License
 
